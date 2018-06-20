@@ -39,17 +39,16 @@ export default {
                 variant: 'danger'
             }
         ],
-        items: items
+        items: []
     }
   },
     created : function () {
         fetch('http://localhost:3000/api/jobs', {
             method: 'GET'
-        }).then(function(response) {
-            console.log(response.json.data);
-        }).catch(function(err) {
-            console.log(JSON.parse(response));
-        });
+        })
+        .then(res => res.json())
+        .then(items => this.items = items);
+
     }
 }
 </script>
