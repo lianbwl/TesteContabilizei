@@ -3,20 +3,17 @@
     <h1>{{msg}}</h1>
     <img src="./assets/logo.png">
     <Form />
-    <Lista />
   </div>
 </template>
 
 <script>
 
 import Form from './Component/Form.vue';
-import Lista from './Component/Lista.vue';
 
 export default {
   name: 'app',
   components:{
-    Form,
-    Lista
+    Form
   },
   data () {
     return {

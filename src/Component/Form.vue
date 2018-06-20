@@ -32,6 +32,12 @@
                             </b-form-select>
                         </b-form-group>
 
+                        <b-collapse class="mt-2" v-model="showCollapse" id="collapse4">
+                            <b-card>
+                                I should start open!
+                            </b-card>
+                        </b-collapse>
+
                         <b-button type="reset" variant="danger">Limpar</b-button>
                         <b-button v-on:click="greet" variant="success">Enviar</b-button>
                     </b-form>
@@ -55,7 +61,7 @@ export default {
                 { text: 'Selecione', value: null },
                 'Web Designer', 'Front-end', 'Back-end', 'UX'
             ],
-            show: true
+            showCollapse: false
         }
     },
     methods: {
@@ -69,7 +75,9 @@ export default {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(this.form)
-            }).then(function(res){ console.log(res) }).catch(function(res){ console.log(res) })
+            }).then(function(res){ 
+                this.showCollapse = true; 
+            }).catch(function(res){ console.log(res) })
         },
         onSubmit (evt) {
             evt.preventDefault();       
