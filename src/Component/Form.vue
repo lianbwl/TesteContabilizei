@@ -32,14 +32,10 @@
                             </b-form-select>
                         </b-form-group>
 
-                        <b-collapse class="mt-2" v-model="showCollapse" id="collapse4">
-                            <b-card>
-                                I should start open!
-                            </b-card>
-                        </b-collapse>
+                        <b-alert v-model="showCollapse" variant="success" show>Enviado com sucesso</b-alert>
 
                         <b-button type="reset" variant="danger">Limpar</b-button>
-                        <b-button v-on:click="greet" variant="success">Enviar</b-button>
+                        <b-button v-on:click="enviaForm" variant="success">Enviar</b-button>
                     </b-form>
                 </b-col>
             </b-row>
@@ -65,9 +61,8 @@ export default {
         }
     },
     methods: {
-        greet: function (event) {
-            event.preventDefault();
-            console.log(JSON.stringify(this.form));
+        enviaForm: function (event) {
+            event.preventDefault();            
 
             fetch("http://localhost:3000/api/jobs", {
                 method: "POST",
@@ -76,11 +71,10 @@ export default {
                 },
                 body: JSON.stringify(this.form)
             }).then(function(res){ 
-                this.showCollapse = true; 
+                 
             }).catch(function(res){ console.log(res) })
-        },
-        onSubmit (evt) {
-            evt.preventDefault();       
+
+            this.onSuccess();
         },
         onReset (evt) {
             evt.preventDefault();
@@ -89,11 +83,17 @@ export default {
             this.form.nome = '';
             this.form.cargos = null;
             this.form.checked = [];
-
-            this.show = false;
             this.$nextTick(() => { 
-                this.show = true 
-            });
+                this.showCollapse = false 
+            });            
+        },
+        onSuccess () {
+            this.form.sobrenome = '';
+            this.form.nome = '';
+            this.form.cargos = '';
+            this.$nextTick(() => { 
+                this.showCollapse = true 
+            });            
         }
     }
 }
