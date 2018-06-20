@@ -13,3 +13,6 @@
 
 ## Rodar o Projeto
 #### npm run dev
+
+
+![alt text](http://julianvianna.com/img/testeContabilizei.PNG)
