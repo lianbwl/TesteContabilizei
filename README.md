@@ -5,8 +5,8 @@
 ### https://docs.google.com/document/d/1gHwrCGocrbbed3RTNYC8tNw-niv0SqcPuE6-nPD_J94/edit?usp=sharing
 
 ## Instalação
-### cd rest, npm install
 ### npm install
+### cd rest, npm install
 
 ## Rodar o Servidor
 #### cd rest, node server.js
@@ -15,4 +15,4 @@
 #### npm run dev
 
 
-![alt text](http://julianvianna.com/img/testeContabilizei.PNG)
+![alt text](http://paperpack.ind.br/testeContabilizei.PNG)
