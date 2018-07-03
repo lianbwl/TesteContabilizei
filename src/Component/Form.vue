@@ -45,57 +45,56 @@
 
 <script>
 export default {
-    name: 'Form',
-    data () {
-        return {
-            form: {
-                nome: '',
-                sobrenome: '',
-                cargo: null
-            },
-            cargos: [
-                { text: 'Selecione', value: null },
-                'Web Designer', 'Front-end', 'Back-end', 'UX'
-            ],
-            showCollapse: false
-        }
-    },
-    methods: {
-        enviaForm: function (event) {
-            event.preventDefault();            
+	name: 'Form',
+	data() {
+		return {
+			form: {
+				nome: '',
+				sobrenome: '',
+				cargo: null,
+			},
+			cargos: [{ text: 'Selecione', value: null }, 'Web Designer', 'Front-end', 'Back-end', 'UX'],
+			showCollapse: false,
+		};
+	},
+	methods: {
+		enviaForm: function(event) {
+			event.preventDefault();
 
-            fetch("http://localhost:3000/api/jobs", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(this.form)
-            }).then(function(res){ 
-                 
-            }).catch(function(res){ console.log(res) })
+			fetch('http://localhost:3000/api/jobs', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(this.form),
+			})
+				.then(function(res) {})
+				.catch(function(res) {
+					console.log(res);
+				});
 
-            this.onSuccess();
-        },
-        onReset (evt) {
-            evt.preventDefault();
+			this.onSuccess();
+		},
+		onReset(evt) {
+			evt.preventDefault();
 
-            this.form.sobrenome = '';
-            this.form.nome = '';
-            this.form.cargos = null;
-            this.form.checked = [];
-            this.$nextTick(() => { 
-                this.showCollapse = false 
-            });            
-        },
-        onSuccess () {
-            this.form.sobrenome = '';
-            this.form.nome = '';
-            this.form.cargos = '';
-            this.$nextTick(() => { 
-                this.showCollapse = true 
-            });            
-        }
-    }
-}
+			this.form.sobrenome = '';
+			this.form.nome = '';
+			this.form.cargos = null;
+			this.form.checked = [];
+			this.$nextTick(() => {
+				this.showCollapse = false;
+			});
+		},
+		onSuccess() {
+			this.form.sobrenome = '';
+			this.form.nome = '';
+			this.form.cargos = '';
+			this.$nextTick(() => {
+				this.showCollapse = true;
+			});
+		},
+	},
+};
 </script>
 
